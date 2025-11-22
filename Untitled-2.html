@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Анімована веб‑сторінка на JavaScript</title>
+<style>
+  body{
+    margin:0;
+    background:#0b1520;
+    font-family:Arial, sans-serif;
+    color:white;
+    overflow:hidden;
+    text-align:center;
+  }
+  h1{margin-top:20px;}
+
+  /* Анімовані плаваючі кольорові кола */
+  .bubble{
+    position:absolute;
+    width:90px;height:90px;
+    border-radius:50%;
+    background:rgba(0,255,200,0.6);
+    animation: float 6s ease-in-out infinite;
+  }
+  .b2{background:rgba(255,120,0,0.6);animation-duration:8s;}
+  .b3{background:rgba(120,80,255,0.6);animation-duration:10s;}
+
+  @keyframes float{
+    0%{transform:translateY(0) translateX(0)}
+    50%{transform:translateY(-80px) translateX(60px)}
+    100%{transform:translateY(0) translateX(0)}
+  }
+
+  /* Керування */
+  .controls{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);}  
+  button{
+    padding:10px 20px;
+    margin:10px;
+    font-size:16px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+  }
+  #start{background:#26c6da;color:#032f36;}
+  #stop{background:#ef5350;color:#330000;}
+</style>
+</head>
+<body>
+
+<h1>Анімована сторінка на JavaScript</h1>
+
+<div class="bubble b1" id="b1" style="left:15%; top:50%;"></div>
+<div class="bubble b2" id="b2" style="left:45%; top:55%;"></div>
+<div class="bubble b3" id="b3" style="left:75%; top:52%;"></div>
+
+<div class="controls">
+  <button id="start">Старт анімації</button>
+  <button id="stop">Стоп анімації</button>
+</div>
+
+<script>
+  const bubbles = document.querySelectorAll('.bubble');
+  const btnStart = document.getElementById('start');
+  const btnStop = document.getElementById('stop');
+
+  btnStart.onclick = () => {
+    bubbles.forEach(b => b.style.animationPlayState = 'running');
+  }
+  btnStop.onclick = () => {
+    bubbles.forEach(b => b.style.animationPlayState = 'paused');
+  }
+</script>
+
+</body>
+</html>
+
